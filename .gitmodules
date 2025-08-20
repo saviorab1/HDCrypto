@@ -1,0 +1,3 @@
+[submodule "HDBank-CryptoBE"]
+	path = HDBank-CryptoBE
+	url = git@github.com:saviorab1/HDBank-CryptoBE.git
