@@ -1,6 +1,6 @@
 # Setup AWS CLI
 ```bash
-aws configure
+aws configure --profile <profile_name>
 ```
 Follow instructions to enter `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, `DEFAULT_REGION`
 ```bash
@@ -13,6 +13,15 @@ Follow instructions to enter `SSO_SESSION_NAME`, `SSO_START_URL`, `SSO_REGION`
 npx ampx sandbox --once --profile <your profile name>
 ```
 `--once` tell amplify to run and deploy/update sanbdox one time only and cancel backend tracking
+
+# Check aws profiles
+```
+aws configure list-profiles
+```
+or Check a specific profile’s details:
+```
+aws configure list --profile <profile_name>
+```
 
 # HDHackathon Frontend Deployment
 ## Prerequisites
