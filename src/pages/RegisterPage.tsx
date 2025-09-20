@@ -11,6 +11,8 @@ import {
   CardTitle,
 } from "../components/ui/card";
 import { ArrowLeft, Mail, Lock, KeyRound } from "lucide-react";
+import BrandSlide from "@/components/BrandSlide";
+import brand_logo from "@/assets/HDBank logo-01.png";
 
 export default function RegisterPage() {
   const [email, setEmail] = useState("");
@@ -50,62 +52,39 @@ export default function RegisterPage() {
   return (
     <div className="min-h-screen flex">
       {/* Left Side - Brand */}
-      <div className="hidden lg:flex lg:w-1/2 bg-gradient-to-br from-red-500 to-orange-500 relative overflow-hidden">
-        <div className="absolute inset-0 bg-black/10"></div>
-        <div className="relative z-10 flex flex-col justify-center items-center text-white p-12">
-          <div className="mb-8">
-            <div className="flex items-center space-x-3 mb-6">
-              <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center">
-                <span className="text-white font-bold text-xl">HD</span>
-              </div>
-              <span className="text-3xl font-bold">HDBank</span>
-            </div>
-          </div>
-
-          <div className="text-center max-w-md">
-            <h1 className="text-4xl font-bold mb-4">HD Bank Hackathon</h1>
-            <p className="text-xl text-white/90 mb-8">Crypto Web Design</p>
-
-            {/* Bitcoin Icon */}
-            <div className="w-32 h-32 mx-auto bg-gradient-to-br from-yellow-400 to-orange-400 rounded-full flex items-center justify-center shadow-2xl">
-              <span className="text-white text-6xl font-bold">₿</span>
-            </div>
-          </div>
-        </div>
-      </div>
+      <BrandSlide />
 
       {/* Right Side - Register Form */}
-      <div className="w-full lg:w-1/2 flex items-center justify-center p-8 bg-gray-50">
+      <div className="w-full lg:w-1/2 flex items-center justify-center p-8 bg-gradient-to-br from-gray-50 to-white">
         <div className="w-full max-w-md">
           {/* Back Button */}
           <div className="mb-8">
             <Link
               to="/"
-              className="inline-flex items-center text-gray-600 hover:text-gray-900 transition-colors"
+              className="inline-flex items-center text-gray-600 hover:text-orange-500 transition-colors group"
             >
-              <ArrowLeft className="w-4 h-4 mr-2" />
-              Back
+              <ArrowLeft className="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform" />
+              Back to Home
             </Link>
           </div>
 
           {/* HDBank Logo */}
           <div className="text-center mb-8">
-            <div className="flex items-center justify-center space-x-2 mb-6">
-              <div className="w-10 h-10 bg-gradient-to-r from-orange-400 to-yellow-400 rounded-full flex items-center justify-center">
-                <span className="text-white font-bold">HD</span>
-              </div>
-              <span className="text-2xl font-bold">
-                <span className="text-red-600">HD</span>
-                <span className="text-gray-700">Bank</span>
-              </span>
+            <div className="flex items-center justify-center">
+              <img
+                src={brand_logo}
+                alt="HD Bank Logo"
+                className="h-20 w-auto"
+              />
             </div>
           </div>
 
-          <Card className="border-0 shadow-lg">
+          <Card className="border-0 shadow-xl bg-white/80 backdrop-blur-sm">
             <CardHeader className="text-center pb-6">
-              <CardTitle className="text-2xl font-bold text-gray-900">
-                Register
+              <CardTitle className="text-3xl font-bold text-gray-900 mb-2">
+                Create Account
               </CardTitle>
+              <p className="text-gray-600">Join the future of crypto trading</p>
             </CardHeader>
             <CardContent>
               <form onSubmit={handleSubmit} className="space-y-6">
@@ -172,9 +151,16 @@ export default function RegisterPage() {
                 <Button
                   type="submit"
                   disabled={isLoading}
-                  className="w-full h-12 bg-red-600 hover:bg-red-700 text-white font-medium"
+                  className="w-full h-12 bg-gradient-to-r from-red-600 to-orange-500 hover:from-red-700 hover:to-orange-600 text-white font-medium shadow-lg hover:shadow-xl transition-all duration-200"
                 >
-                  {isLoading ? "Creating Account..." : "Register"}
+                  {isLoading ? (
+                    <div className="flex items-center">
+                      <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
+                      Creating Account...
+                    </div>
+                  ) : (
+                    "Create Account"
+                  )}
                 </Button>
 
                 <div className="text-center">
