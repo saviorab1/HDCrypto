@@ -1,9 +1,8 @@
-import type React from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useAuth } from "../contexts/AuthContext";
+import { useAuth } from "../hooks/useAuth";
 import { Button } from "./ui/button";
 
-export const Header: React.FC = () => {
+export default function Header() {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
 
@@ -58,7 +57,7 @@ export const Header: React.FC = () => {
           <div className="flex items-center space-x-4">
             {user ? (
               <>
-                <Link to="/platform/dashboard">
+                <Link to="/dashboard">
                   <Button
                     variant="outline"
                     className="border-orange-500 text-orange-500 hover:bg-orange-50 bg-transparent"
@@ -81,11 +80,6 @@ export const Header: React.FC = () => {
                     Register
                   </Button>
                 </Link>
-                <Link to="/login">
-                  <Button className="bg-red-600 hover:bg-red-700 text-white">
-                    Login
-                  </Button>
-                </Link>
               </>
             )}
           </div>
@@ -93,4 +87,4 @@ export const Header: React.FC = () => {
       </div>
     </header>
   );
-};
+}

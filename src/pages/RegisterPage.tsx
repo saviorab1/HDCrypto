@@ -1,7 +1,6 @@
-import type React from "react";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useAuth } from "../contexts/AuthContext";
+import { useAuth } from "../hooks/useAuth";
 import { Button } from "../components/ui/button";
 import { Input } from "../components/ui/input";
 import { Label } from "../components/ui/label";
@@ -13,7 +12,7 @@ import {
 } from "../components/ui/card";
 import { ArrowLeft, Mail, Lock, KeyRound } from "lucide-react";
 
-export const RegisterPage: React.FC = () => {
+export default function RegisterPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -42,7 +41,7 @@ export const RegisterPage: React.FC = () => {
 
     const success = await register(email, password);
     if (success) {
-      navigate("/platform/dashboard");
+      navigate("/dashboard");
     } else {
       setError("Registration failed. Please try again.");
     }
@@ -196,4 +195,4 @@ export const RegisterPage: React.FC = () => {
       </div>
     </div>
   );
-};
+}

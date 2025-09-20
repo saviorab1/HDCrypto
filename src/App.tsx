@@ -1,13 +1,15 @@
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import { AuthProvider } from "./contexts/AuthContext";
-import { ProtectedRoute } from "./components/ProtectedRoute";
-import { PublicRoute } from "./components/PublicRoute";
-import { HomePage } from "./pages/HomePage";
-import { AboutPage } from "./pages/AboutPage";
-import { LoginPage } from "./pages/LoginPage";
-import { RegisterPage } from "./pages/RegisterPage";
-import { DashboardPage } from "./pages/DashboardPage";
-import { Sidebar } from "./components/Sidebar";
+import ProtectedRoute from "./components/ProtectedRoute";
+import PublicRoute from "./components/PublicRoute";
+import HomePage from "./pages/HomePage";
+import AboutPage from "./pages/AboutPage";
+import LoginPage from "./pages/LoginPage";
+import RegisterPage from "./pages/RegisterPage";
+import DashboardPage from "./pages/DashboardPage";
+import Sidebar from "./components/Sidebar";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 import "./App.css";
 
 function App() {
@@ -16,8 +18,26 @@ function App() {
       <Router>
         <div className="App">
           <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/about" element={<AboutPage />} />
+            <Route
+              path="/"
+              element={
+                <div>
+                  <Header />
+                  <HomePage />
+                  <Footer />
+                </div>
+              }
+            />
+            <Route
+              path="/about"
+              element={
+                <div>
+                  <Header />
+                  <AboutPage />
+                  <Footer />
+                </div>
+              }
+            />
             <Route
               path="/login"
               element={
@@ -35,7 +55,7 @@ function App() {
               }
             />
             <Route
-              path="/platform/dashboard"
+              path="/dashboard"
               element={
                 <ProtectedRoute>
                   <DashboardPage />
@@ -43,7 +63,7 @@ function App() {
               }
             />
             <Route
-              path="/platform/trading"
+              path="/trading"
               element={
                 <ProtectedRoute>
                   <div className="flex h-screen bg-gray-50">
@@ -63,7 +83,7 @@ function App() {
               }
             />
             <Route
-              path="/platform/banking"
+              path="/banking"
               element={
                 <ProtectedRoute>
                   <div className="flex h-screen bg-gray-50">
@@ -83,7 +103,7 @@ function App() {
               }
             />
             <Route
-              path="/platform/analytics"
+              path="/analytics"
               element={
                 <ProtectedRoute>
                   <div className="flex h-screen bg-gray-50">
@@ -103,7 +123,7 @@ function App() {
               }
             />
             <Route
-              path="/platform/portfolio"
+              path="/portfolio"
               element={
                 <ProtectedRoute>
                   <div className="flex h-screen bg-gray-50">
@@ -123,7 +143,7 @@ function App() {
               }
             />
             <Route
-              path="/platform/settings"
+              path="/settings"
               element={
                 <ProtectedRoute>
                   <div className="flex h-screen bg-gray-50">

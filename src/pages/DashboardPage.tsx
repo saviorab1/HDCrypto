@@ -1,5 +1,4 @@
-import type React from "react";
-import { Sidebar } from "../components/Sidebar";
+import Sidebar from "../components/Sidebar";
 import {
   Card,
   CardContent,
@@ -15,12 +14,9 @@ import {
   SelectTrigger,
   SelectValue,
 } from "../components/ui/select";
-import { Search, Plus, Bell } from "lucide-react";
-import { useAuth } from "../contexts/AuthContext";
+import { Search, Plus } from "lucide-react";
 
-export const DashboardPage: React.FC = () => {
-  const { user } = useAuth();
-
+export default function DashboardPage() {
   const holdings = [
     {
       name: "Bitcoin",
@@ -77,7 +73,7 @@ export const DashboardPage: React.FC = () => {
 
       <div className="flex-1 flex flex-col overflow-hidden">
         {/* Header */}
-        <header className="bg-white border-b border-gray-200 px-6 py-4">
+        <header className="px-6 py-7">
           <div className="flex items-center justify-between">
             <div>
               <h1 className="text-2xl font-bold text-gray-900">Dashboard</h1>
@@ -98,16 +94,6 @@ export const DashboardPage: React.FC = () => {
                 <Plus className="w-4 h-4 mr-2" />
                 Create RWA Contract
               </Button>
-              <div className="relative">
-                <Bell className="w-6 h-6 text-gray-600" />
-                <div className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full"></div>
-              </div>
-              <div className="flex items-center space-x-2">
-                <span className="text-sm text-gray-600">Nhat Huynh</span>
-                <div className="w-8 h-8 bg-red-500 rounded-full flex items-center justify-center">
-                  <span className="text-white text-sm font-medium">NH</span>
-                </div>
-              </div>
             </div>
           </div>
         </header>
@@ -336,4 +322,4 @@ export const DashboardPage: React.FC = () => {
       </div>
     </div>
   );
-};
+}

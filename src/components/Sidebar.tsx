@@ -1,6 +1,5 @@
-import type React from "react";
 import { Link, useLocation } from "react-router-dom";
-import { useAuth } from "../contexts/AuthContext";
+import { useAuth } from "../hooks/useAuth";
 import {
   LayoutDashboard,
   TrendingUp,
@@ -12,7 +11,7 @@ import {
 } from "lucide-react";
 import { Button } from "./ui/button";
 
-export const Sidebar: React.FC = () => {
+export default function Sidebar() {
   const { user, logout } = useAuth();
   const location = useLocation();
 
@@ -20,38 +19,38 @@ export const Sidebar: React.FC = () => {
     {
       icon: LayoutDashboard,
       label: "Dashboard",
-      path: "/platform/dashboard",
-      active: location.pathname === "/platform/dashboard",
+      path: "/dashboard",
+      active: location.pathname === "/dashboard",
     },
     {
       icon: TrendingUp,
       label: "Trading",
-      path: "/platform/trading",
-      active: location.pathname === "/platform/trading",
+      path: "/trading",
+      active: location.pathname === "/trading",
     },
     {
       icon: Building2,
       label: "Banking",
-      path: "/platform/banking",
-      active: location.pathname === "/platform/banking",
+      path: "/banking",
+      active: location.pathname === "/banking",
     },
     {
       icon: BarChart3,
       label: "Analytics",
-      path: "/platform/analytics",
-      active: location.pathname === "/platform/analytics",
+      path: "/analytics",
+      active: location.pathname === "/analytics",
     },
     {
       icon: Briefcase,
       label: "Portfolio",
-      path: "/platform/portfolio",
-      active: location.pathname === "/platform/portfolio",
+      path: "/portfolio",
+      active: location.pathname === "/portfolio",
     },
     {
       icon: Settings,
       label: "Settings",
-      path: "/platform/settings",
-      active: location.pathname === "/platform/settings",
+      path: "/settings",
+      active: location.pathname === "/settings",
     },
   ];
 
@@ -124,4 +123,4 @@ export const Sidebar: React.FC = () => {
       </div>
     </div>
   );
-};
+}

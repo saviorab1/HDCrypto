@@ -1,12 +1,12 @@
-import type React from "react";
 import { Navigate } from "react-router-dom";
-import { useAuth } from "../contexts/AuthContext";
+import type { ReactNode } from "react";
+import { useAuth } from "../hooks/useAuth";
 
 interface PublicRouteProps {
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
-export const PublicRoute: React.FC<PublicRouteProps> = ({ children }) => {
+export default function PublicRoute({ children }: PublicRouteProps) {
   const { user, isLoading } = useAuth();
 
   if (isLoading) {
@@ -19,8 +19,8 @@ export const PublicRoute: React.FC<PublicRouteProps> = ({ children }) => {
 
   // If user is already logged in, redirect to dashboard
   if (user) {
-    return <Navigate to="/platform/dashboard" replace />;
+    return <Navigate to="/dashboard" replace />;
   }
 
   return <>{children}</>;
-};
+}
