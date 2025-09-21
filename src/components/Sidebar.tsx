@@ -1,123 +1,127 @@
 import { Link, useLocation } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
+import { cn } from "@/lib/utils";
+import { Button } from "./ui/button";
+import { Badge } from "./ui/badge";
 import {
   LayoutDashboard,
   TrendingUp,
-  Building2,
-  BarChart3,
-  Briefcase,
+  Wallet,
+  Bell,
   Settings,
   LogOut,
+  Newspaper,
+  BarChart3,
 } from "lucide-react";
-import { Button } from "./ui/button";
+import brand_logo from "@/assets/HDBank logo-01.png";
+
+const mainNavigation = [
+  { name: "Overview", href: "/overview", icon: LayoutDashboard },
+  { name: "Exchange", href: "/exchange", icon: TrendingUp },
+  { name: "Analytics", href: "/analytics", icon: BarChart3 },
+  { name: "News", href: "/news", icon: Newspaper },
+];
+
+const accountNavigation = [
+  {
+    name: "Notification",
+    href: "/notifications",
+    icon: Bell,
+    badge: "12",
+  },
+  { name: "Balance", href: "/balance", icon: Wallet },
+  { name: "Setting", href: "/settings", icon: Settings },
+];
 
 export default function Sidebar() {
-  const { user, logout } = useAuth();
+  const { logout } = useAuth();
   const location = useLocation();
 
-  const menuItems = [
-    {
-      icon: LayoutDashboard,
-      label: "Dashboard",
-      path: "/dashboard",
-      active: location.pathname === "/dashboard",
-    },
-    {
-      icon: TrendingUp,
-      label: "Trading",
-      path: "/trading",
-      active: location.pathname === "/trading",
-    },
-    {
-      icon: Building2,
-      label: "Banking",
-      path: "/banking",
-      active: location.pathname === "/banking",
-    },
-    {
-      icon: BarChart3,
-      label: "Analytics",
-      path: "/analytics",
-      active: location.pathname === "/analytics",
-    },
-    {
-      icon: Briefcase,
-      label: "Portfolio",
-      path: "/portfolio",
-      active: location.pathname === "/portfolio",
-    },
-    {
-      icon: Settings,
-      label: "Settings",
-      path: "/settings",
-      active: location.pathname === "/settings",
-    },
-  ];
-
   return (
-    <div className="w-64 bg-white border-r border-gray-200 flex flex-col h-full">
+    <div className="flex flex-col h-full bg-white border-r border-gray-200">
       {/* Logo */}
-      <div className="p-6 border-b border-gray-200">
-        <div className="flex items-center space-x-3">
-          <div className="w-10 h-10 bg-gradient-to-r from-orange-400 to-yellow-400 rounded-full flex items-center justify-center">
-            <span className="text-white font-bold">HD</span>
-          </div>
-          <div>
-            <div className="text-lg font-bold">
-              <span className="text-red-600">HD</span>
-              <span className="text-gray-700">Bank</span>
-            </div>
-            <div className="text-xs text-gray-500">
-              Cơn kết tối ích cao nhất
-            </div>
-          </div>
+      <div className="flex items-center space-x-2 p-6 border-b border-gray-200">
+        <div className="flex items-center justify-center">
+          <img src={brand_logo} alt="HD Bank Logo" className="w-35" />
         </div>
       </div>
 
       {/* Navigation */}
-      <nav className="flex-1 p-4">
-        <div className="space-y-2">
-          {menuItems.map((item) => {
-            const Icon = item.icon;
-            return (
-              <Link
-                key={item.path}
-                to={item.path}
-                className={`flex items-center space-x-3 px-4 py-3 rounded-lg transition-colors ${
-                  item.active
-                    ? "bg-orange-500 text-white"
-                    : "text-gray-700 hover:bg-gray-100"
-                }`}
-              >
-                <Icon className="w-5 h-5" />
-                <span className="font-medium">{item.label}</span>
-              </Link>
-            );
-          })}
+      <div className="flex-1 px-4 py-6 space-y-8">
+        <div>
+          <nav className="space-y-1">
+            {mainNavigation.map((item) => {
+              const isActive =
+                location.pathname === item.href ||
+                (item.href === "/overview" &&
+                  location.pathname === "/dashboard");
+              return (
+                <Link
+                  key={item.name}
+                  to={item.href}
+                  className={cn(
+                    "flex items-center space-x-3 px-3 py-2 rounded-lg text-sm font-medium transition-colors",
+                    isActive
+                      ? "bg-orange-500 text-white"
+                      : "text-gray-700 hover:text-gray-900 hover:bg-gray-100"
+                  )}
+                >
+                  <item.icon className="h-5 w-5" />
+                  <span>{item.name}</span>
+                </Link>
+              );
+            })}
+          </nav>
         </div>
-      </nav>
 
-      {/* User Profile & Logout */}
-      <div className="p-4 border-t border-gray-200">
-        <div className="flex items-center space-x-3 mb-4">
-          <div className="w-10 h-10 bg-gray-300 rounded-full flex items-center justify-center">
-            <span className="text-gray-600 font-medium">
-              {user?.name?.charAt(0).toUpperCase() || "U"}
-            </span>
-          </div>
-          <div className="flex-1 min-w-0">
-            <div className="text-sm font-medium text-gray-900 truncate">
-              {user?.name || "User"}
-            </div>
-            <div className="text-xs text-gray-500 truncate">{user?.email}</div>
-          </div>
+        <div>
+          <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">
+            Account
+          </p>
+          <nav className="space-y-1">
+            {accountNavigation.map((item) => {
+              const isActive = location.pathname === item.href;
+              return (
+                <Link
+                  key={item.name}
+                  to={item.href}
+                  className={cn(
+                    "flex items-center justify-between px-3 py-2 rounded-lg text-sm font-medium transition-colors",
+                    isActive
+                      ? "bg-orange-500 text-white"
+                      : "text-gray-700 hover:text-gray-900 hover:bg-gray-100"
+                  )}
+                >
+                  <div className="flex items-center space-x-3">
+                    <item.icon className="h-5 w-5" />
+                    <span>{item.name}</span>
+                  </div>
+                  {item.badge && (
+                    <Badge
+                      className={`text-xs ${
+                        isActive
+                          ? "bg-white text-orange-500 hover:bg-gray-100"
+                          : "bg-red-500 text-white hover:bg-red-600"
+                      }`}
+                    >
+                      {item.badge}
+                    </Badge>
+                  )}
+                </Link>
+              );
+            })}
+          </nav>
         </div>
+      </div>
+
+      {/* User Profile */}
+      <div className="p-4 border-t border-gray-200">
         <Button
+          variant="ghost"
+          className="w-full justify-start text-red-600 hover:text-red-600 hover:bg-red-50"
           onClick={logout}
-          variant="outline"
-          className="w-full justify-start text-red-600 border-red-200 hover:bg-red-50 bg-transparent"
         >
-          <LogOut className="w-4 h-4 mr-2" />
+          <LogOut className="h-4 w-4 mr-3" />
           Logout
         </Button>
       </div>

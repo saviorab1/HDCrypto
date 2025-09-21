@@ -7,6 +7,13 @@ import AboutPage from "./pages/AboutPage";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import DashboardPage from "./pages/DashboardPage";
+import OverviewPage from "./pages/dashboard/OverviewPage";
+import BalancePage from "./pages/dashboard/BalancePage";
+import ExchangePage from "./pages/dashboard/ExchangePage";
+import AnalyticPage from "./pages/dashboard/AnalyticPage";
+import NewsPage from "./pages/dashboard/NewsPage";
+import NotificationPage from "./pages/dashboard/NotificationPage";
+import SettingsPage from "./pages/dashboard/SettingsPage";
 import Sidebar from "./components/Sidebar";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -55,113 +62,86 @@ function App() {
               }
             />
             <Route
+              path="/overview"
+              element={
+                <ProtectedRoute>
+                  <DashboardPage />
+                </ProtectedRoute>
+              }
+            >
+              <Route index element={<OverviewPage />} />
+            </Route>
+            <Route
+              path="/balance"
+              element={
+                <ProtectedRoute>
+                  <DashboardPage />
+                </ProtectedRoute>
+              }
+            >
+              <Route index element={<BalancePage />} />
+            </Route>
+            <Route
+              path="/exchange"
+              element={
+                <ProtectedRoute>
+                  <DashboardPage />
+                </ProtectedRoute>
+              }
+            >
+              <Route index element={<ExchangePage />} />
+            </Route>
+            <Route
+              path="/analytics"
+              element={
+                <ProtectedRoute>
+                  <DashboardPage />
+                </ProtectedRoute>
+              }
+            >
+              <Route index element={<AnalyticPage />} />
+            </Route>
+            <Route
+              path="/news"
+              element={
+                <ProtectedRoute>
+                  <DashboardPage />
+                </ProtectedRoute>
+              }
+            >
+              <Route index element={<NewsPage />} />
+            </Route>
+            <Route
+              path="/notifications"
+              element={
+                <ProtectedRoute>
+                  <DashboardPage />
+                </ProtectedRoute>
+              }
+            >
+              <Route index element={<NotificationPage />} />
+            </Route>
+            <Route
+              path="/settings"
+              element={
+                <ProtectedRoute>
+                  <DashboardPage />
+                </ProtectedRoute>
+              }
+            >
+              <Route index element={<SettingsPage />} />
+            </Route>
+            <Route
               path="/dashboard"
               element={
                 <ProtectedRoute>
                   <DashboardPage />
                 </ProtectedRoute>
               }
-            />
-            <Route
-              path="/trading"
-              element={
-                <ProtectedRoute>
-                  <div className="flex h-screen bg-gray-50">
-                    <Sidebar />
-                    <div className="flex-1 flex items-center justify-center">
-                      <div className="text-center">
-                        <h1 className="text-2xl font-bold text-gray-900 mb-2">
-                          Trading
-                        </h1>
-                        <p className="text-gray-600">
-                          Trading page coming soon...
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/banking"
-              element={
-                <ProtectedRoute>
-                  <div className="flex h-screen bg-gray-50">
-                    <Sidebar />
-                    <div className="flex-1 flex items-center justify-center">
-                      <div className="text-center">
-                        <h1 className="text-2xl font-bold text-gray-900 mb-2">
-                          Banking
-                        </h1>
-                        <p className="text-gray-600">
-                          Banking page coming soon...
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/analytics"
-              element={
-                <ProtectedRoute>
-                  <div className="flex h-screen bg-gray-50">
-                    <Sidebar />
-                    <div className="flex-1 flex items-center justify-center">
-                      <div className="text-center">
-                        <h1 className="text-2xl font-bold text-gray-900 mb-2">
-                          Analytics
-                        </h1>
-                        <p className="text-gray-600">
-                          Analytics page coming soon...
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/portfolio"
-              element={
-                <ProtectedRoute>
-                  <div className="flex h-screen bg-gray-50">
-                    <Sidebar />
-                    <div className="flex-1 flex items-center justify-center">
-                      <div className="text-center">
-                        <h1 className="text-2xl font-bold text-gray-900 mb-2">
-                          Portfolio
-                        </h1>
-                        <p className="text-gray-600">
-                          Portfolio page coming soon...
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/settings"
-              element={
-                <ProtectedRoute>
-                  <div className="flex h-screen bg-gray-50">
-                    <Sidebar />
-                    <div className="flex-1 flex items-center justify-center">
-                      <div className="text-center">
-                        <h1 className="text-2xl font-bold text-gray-900 mb-2">
-                          Settings
-                        </h1>
-                        <p className="text-gray-600">
-                          Settings page coming soon...
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </ProtectedRoute>
-              }
-            />
+            >
+              <Route index element={<OverviewPage />} />
+            </Route>
+
             <Route
               path="*"
               element={

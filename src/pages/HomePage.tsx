@@ -7,43 +7,54 @@ import {
   CardTitle,
 } from "../components/ui/card";
 
+import bitcoin_logo from "@/assets/btc.png";
+import etherium_logo from "@/assets/eth.png";
+import {
+  Megaphone,
+  Newspaper,
+  Zap,
+  WalletCards,
+  ChartLine,
+  Bot,
+} from "lucide-react";
+
 export default function HomePage() {
   const features = [
     {
       title: "AI Trading Assistant",
       description:
         "Real-time market analysis, risk assessment, and personalized trading recommendations.",
-      icon: "🤖",
+      icon: Bot,
     },
     {
       title: "Portfolio Analytics",
       description:
         "Advanced charts, performance metrics, and detailed insights about your investments.",
-      icon: "📊",
+      icon: ChartLine,
     },
     {
       title: "Multi-Wallet Support",
       description:
         "Connect multiple wallets and exchanges to get a unified view of your entire crypto portfolio.",
-      icon: "💼",
+      icon: WalletCards,
     },
     {
       title: "Real-time Trading",
       description:
         "Real-time market analysis, risk assessment, and personalized trading recommendations.",
-      icon: "⚡",
+      icon: Zap,
     },
     {
       title: "Smart Alerts",
       description:
         "Get notified about market movements, portfolio changes, and trading opportunities.",
-      icon: "🔔",
+      icon: Megaphone,
     },
     {
       title: "Market News",
       description:
         "Stay updated with the latest crypto news, trends, and market analysis from trusted sources.",
-      icon: "📰",
+      icon: Newspaper,
     },
   ];
 
@@ -54,7 +65,8 @@ export default function HomePage() {
       price: "49,645 Inr",
       change: "+14.04%",
       changeColor: "text-green-500",
-      icon: "₿",
+      icon: bitcoin_logo,
+      isImage: true,
     },
     {
       name: "Ethereum",
@@ -62,7 +74,8 @@ export default function HomePage() {
       price: "36,675 Inr",
       change: "+43.04%",
       changeColor: "text-green-500",
-      icon: "Ξ",
+      icon: etherium_logo,
+      isImage: true,
     },
     {
       name: "Solana",
@@ -71,6 +84,7 @@ export default function HomePage() {
       change: "-14.23%",
       changeColor: "text-red-500",
       icon: "◎",
+      isImage: false,
     },
     {
       name: "Doge",
@@ -79,6 +93,7 @@ export default function HomePage() {
       change: "+17.06%",
       changeColor: "text-green-500",
       icon: "Ð",
+      isImage: false,
     },
   ];
 
@@ -141,14 +156,14 @@ export default function HomePage() {
                   </div>
                 </div>
                 <div className="flex items-center">
-                  <Button className="bg-orange-500 hover:bg-orange-600 text-white w-full">
+                  <Button className="bg-[#F9B400] hover:bg-orange-600 text-black w-full">
                     Buy Crypto
                   </Button>
                 </div>
               </div>
             </div>
             <div className="text-center mt-8">
-              <Button className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-3">
+              <Button className="bg-[#F9B400] hover:bg-orange-600 text-black px-8 py-6 rounded-3xl">
                 Trade Crypto
               </Button>
             </div>
@@ -177,7 +192,11 @@ export default function HomePage() {
               >
                 <CardHeader>
                   <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mb-4">
-                    <span className="text-2xl">{feature.icon}</span>
+                    {typeof feature.icon === "string" ? (
+                      <span className="text-2xl">{feature.icon}</span>
+                    ) : (
+                      <feature.icon className="w-6 h-6 text-orange-600" />
+                    )}
                   </div>
                   <CardTitle className="text-xl font-semibold text-gray-900">
                     {feature.title}
@@ -231,9 +250,17 @@ export default function HomePage() {
                       <td className="px-6 py-4 whitespace-nowrap">
                         <div className="flex items-center">
                           <div className="w-10 h-10 bg-orange-100 rounded-full flex items-center justify-center mr-3">
-                            <span className="text-orange-600 font-bold">
-                              {crypto.icon}
-                            </span>
+                            {crypto.isImage ? (
+                              <img
+                                src={crypto.icon}
+                                alt={crypto.name}
+                                className="w-6 h-6"
+                              />
+                            ) : (
+                              <span className="text-orange-600 font-bold">
+                                {crypto.icon}
+                              </span>
+                            )}
                           </div>
                           <div>
                             <div className="text-sm font-medium text-gray-900">

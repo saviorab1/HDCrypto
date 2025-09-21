@@ -1,4 +1,4 @@
-import brand_logo from "@/assets/HDBank logo-01.png";
+import brand_logo from "@/assets/logo_hdbank_white.png";
 import bitcoin_logo from "@/assets/btc.png";
 
 export default function BrandSlide() {

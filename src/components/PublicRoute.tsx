@@ -17,9 +17,9 @@ export default function PublicRoute({ children }: PublicRouteProps) {
     );
   }
 
-  // If user is already logged in, redirect to dashboard
+  // If user is already logged in, redirect to overview
   if (user) {
-    return <Navigate to="/dashboard" replace />;
+    return <Navigate to="/overview" replace />;
   }
 
   return <>{children}</>;
