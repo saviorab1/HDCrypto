@@ -1,52 +1,14 @@
-# HDHackathon Frontend Deployment
-## Prerequisites
-- Node.js (v18 or higher)
-- npm
-- AWS CLI configured (for deployment)
+<h1 align="center">HD Hackathon FE</h1>
+<p align="center">Web UI for HD Hackathon project</p>
 
-## Installation
-1. Install depedencies
-```bash
-npm install
-```
-In the hotfix version, i had downgraded React from v19 to v18, so you dont have to run the command below again
-```bash
-npm install react@^18.3.1 react-dom@^18.3.1 @types/react@^18.3.0 @types/react-dom@^18.3.0
-```
+<div align="center">
+    <img src="https://cdn.jsdelivr.net/gh/tandpfun/skill-icons/icons/Vite-Dark.svg" height="45" alt="vite logo" />
+    <img src="https://cdn.jsdelivr.net/gh/tandpfun/skill-icons/icons/React-Dark.svg" height="45" alt="react logo" />
+    <img width="12" />
+    <img src="https://cdn.jsdelivr.net/gh/tandpfun/skill-icons/icons/TypeScript.svg" height="45" alt="typescript logo" />
+    <img width="12" />
+    <img src="https://cdn.jsdelivr.net/gh/tandpfun/skill-icons/icons/TailwindCSS-Dark.svg" height="45" alt="tailwind logo" />
+</div>
 
-## Development
-1. Start the development server
-```bash
-npm run dev
-```
-2. Open your browser and navigate to `http://localhost:3000`
-
-## Other commands
-- Build for production
-```bash
-npm run build    # Build for production
-npm run preview  # Preview production build
-npm run lint     # Run ESLint
-```
-# AWS Amplify Setup
-## Deploy backend
-```bash
-npx ampx sandbox
-```
-
-# Folder structure
-```
-src/
-├── components/      # Reusable components
-├── pages/           # Next.js pages
-├── styles/          # Global styles
-├── utils/           # Utility functions
-├── hooks/           # Custom hooks
-├── contexts/        # Context providers
-├── services/        # API services
-└── assets/          # Static assets (images, icons, etc.)
-amplify/
-├── backend/         # Amplify backend configuration
-amplify_outputs.json # Amplify resources declaration
-```
-
+## Instruction
+Please follow [Instruction file](./INSTRUCTION.md) to setup this project
